@@ -2,13 +2,27 @@
 
 @section('content')
 <div class="container">
-    @if ($task)
-        <h1>{{ $task->title }}</h1>
-        <p>{{ $task->description }}</p>
-        <small>Status: {{ $task->is_completed ? 'Completed' : 'Pending' }}</small>
-    @else
-        <p>Task not found.</p>
-    @endif
-    <a href="{{ route('tasks.index') }}" class="btn btn-secondary">Back to Tasks</a>
+    <h1>Task Details</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ $task->title }}</h5>
+            <p class="card-text">{{ $task->description }}</p>
+            <p class="card-text">
+                <strong>Status:</strong> {{ $task->is_completed ? 'Completed' : 'Pending' }}
+            </p>
+            <p class="card-text">
+                <strong>Created at:</strong> {{ $task->created_at }}
+            </p>
+            <p class="card-text">
+                <strong>Updated at:</strong> {{ $task->updated_at }}
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">Edit</a>
+        <a href="{{ route('tasks.index') }}" class="btn btn-secondary">Back to List</a>
+    </div>
 </div>
 @endsection
