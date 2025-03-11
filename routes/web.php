@@ -1,18 +1,18 @@
 <?php
-use App\Http\Controllers\GreetController;
+
 use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', [TaskController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/greet', [GreetController::class, 'show'])->name('greet');
+Route::get('/greet', function () {
+    return view('greet');
+});
 
-Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
-Route::resource('tasks', TaskController::class)->names([
-    'index' => 'tasks.index',
-    'store' => 'tasks.store',
-    'show' => 'tasks.show',
-    'edit' => 'tasks.edit',
-    'update' => 'tasks.update',
-    'destroy' => 'tasks.destroy',
-]);
+Route::get('/greet/{name}', function ($name) {
+    return view('greet', ['name' => $name]);
+});
 
+Route::resource('tasks', TaskController::class);
