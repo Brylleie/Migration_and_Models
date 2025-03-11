@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('tasks.index') }}">Task Manager</a>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <a href="{{ route('tasks.index') }}" class="text-white text-xl font-bold">Task Manager</a>
         </div>
     </nav>
-
-    @yield('content')
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <main class="container mx-auto px-6 py-8">
+        @yield('content')
+    </main>
 </body>
 </html>
